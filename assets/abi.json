@@ -1,0 +1,118 @@
+
+[
+	{
+		"inputs": [],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"inputs": [],
+		"name": "lender",
+		"outputs": [
+			{
+				"internalType": "address payable",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "loans",
+		"outputs": [
+			{
+				"internalType": "address payable",
+				"name": "borrower",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "loanAmount",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "interestRate",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "deadline",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "interest",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "lastPaymentDate",
+				"type": "uint256"
+			},
+			{
+				"internalType": "bool",
+				"name": "sanctioned",
+				"type": "bool"
+			},
+			{
+				"internalType": "uint256",
+				"name": "amountRepaid",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "totalAmountToBePaid",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "repayLoan",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_deadline",
+				"type": "uint256"
+			}
+		],
+		"name": "requestLoan",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address payable",
+				"name": "_borrower",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_interestRate",
+				"type": "uint256"
+			}
+		],
+		"name": "sanctionLoan",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	}
+]

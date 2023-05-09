@@ -1,0 +1,2 @@
+contractAddress = '<your_contract_address>';
+ contract = DeployedContract(ContractAbi.fromJson(contractAbi, 'LoanContract'), EthereumAddress.fromHex(contractAddress));
