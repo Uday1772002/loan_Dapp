@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:web3dart/web3dart.dart';
- import "package:web_socket_channel/io.dart";
 
 import '../client instance.dart';
+
 class LoanRequestForm extends StatefulWidget {
   final String borrowerAddress;
 
-  LoanRequestForm({required this.borrowerAddress});
+  const LoanRequestForm({super.key, required this.borrowerAddress});
 
   @override
-  _LoanRequestFormState createState() => _LoanRequestFormState();
+  State<LoanRequestForm> createState() => _LoanRequestFormState();
 }
 
 class _LoanRequestFormState extends State<LoanRequestForm> {
@@ -17,7 +17,7 @@ class _LoanRequestFormState extends State<LoanRequestForm> {
   final _deadlineController = TextEditingController();
 
   Future<void> _requestLoan() async {
-    final credentials = await web3.credentialsFromPrivateKey('<your_private_key>');
+    final credentials = EthPrivateKey.fromHex('<your_private_key>');
     final function = contract.function('requestLoan');
     final deadline = int.parse(_deadlineController.text);
     final result = await web3.sendTransaction(
@@ -29,7 +29,7 @@ class _LoanRequestFormState extends State<LoanRequestForm> {
       ),
       chainId: 1337, // replace with your chain ID
     );
-    print(result);
+    debugPrint(result);
   }
 
   @override
@@ -41,7 +41,7 @@ class _LoanRequestFormState extends State<LoanRequestForm> {
         children: [
           TextFormField(
             controller: _deadlineController,
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               labelText: 'Deadline (in seconds)',
             ),
             validator: (value) {
@@ -57,7 +57,7 @@ class _LoanRequestFormState extends State<LoanRequestForm> {
                 _requestLoan();
               }
             },
-            child: Text('Request Loan'),
+            child: const Text('Request Loan'),
           ),
         ],
       ),

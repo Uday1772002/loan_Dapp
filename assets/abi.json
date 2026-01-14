@@ -1,118 +1,77 @@
-
 [
-	{
-		"inputs": [],
-		"stateMutability": "nonpayable",
-		"type": "constructor"
-	},
-	{
-		"inputs": [],
-		"name": "lender",
-		"outputs": [
-			{
-				"internalType": "address payable",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"name": "loans",
-		"outputs": [
-			{
-				"internalType": "address payable",
-				"name": "borrower",
-				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "loanAmount",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "interestRate",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "deadline",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "interest",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "lastPaymentDate",
-				"type": "uint256"
-			},
-			{
-				"internalType": "bool",
-				"name": "sanctioned",
-				"type": "bool"
-			},
-			{
-				"internalType": "uint256",
-				"name": "amountRepaid",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "totalAmountToBePaid",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "repayLoan",
-		"outputs": [],
-		"stateMutability": "payable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "_deadline",
-				"type": "uint256"
-			}
-		],
-		"name": "requestLoan",
-		"outputs": [],
-		"stateMutability": "payable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address payable",
-				"name": "_borrower",
-				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_interestRate",
-				"type": "uint256"
-			}
-		],
-		"name": "sanctionLoan",
-		"outputs": [],
-		"stateMutability": "payable",
-		"type": "function"
-	}
+  {
+    "inputs": [],
+    "name": "loanCounter",
+    "outputs": [{"internalType": "uint256", "name": "", "type": "uint256"}],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [{"internalType": "uint256", "name": "_amount", "type": "uint256"}, {"internalType": "uint256", "name": "_duration", "type": "uint256"}],
+    "name": "requestLoan",
+    "outputs": [{"internalType": "uint256", "name": "", "type": "uint256"}],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [{"internalType": "uint256", "name": "_loanId", "type": "uint256"}, {"internalType": "uint256", "name": "_interestRate", "type": "uint256"}],
+    "name": "sanctionLoan",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [{"internalType": "uint256", "name": "_loanId", "type": "uint256"}],
+    "name": "repayLoan",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [{"internalType": "uint256", "name": "_loanId", "type": "uint256"}],
+    "name": "cancelLoan",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [{"internalType": "uint256", "name": "_loanId", "type": "uint256"}],
+    "name": "getLoan",
+    "outputs": [
+      {
+        "components": [
+          {"internalType": "uint256", "name": "id", "type": "uint256"},
+          {"internalType": "address", "name": "borrower", "type": "address"},
+          {"internalType": "address", "name": "lender", "type": "address"},
+          {"internalType": "uint256", "name": "amount", "type": "uint256"},
+          {"internalType": "uint256", "name": "interestRate", "type": "uint256"},
+          {"internalType": "uint256", "name": "duration", "type": "uint256"},
+          {"internalType": "uint256", "name": "startTime", "type": "uint256"},
+          {"internalType": "uint256", "name": "repaymentAmount", "type": "uint256"},
+          {"internalType": "bool", "name": "isActive", "type": "bool"},
+          {"internalType": "bool", "name": "isRepaid", "type": "bool"},
+          {"internalType": "bool", "name": "isSanctioned", "type": "bool"}
+        ],
+        "internalType": "struct LoanContract.Loan",
+        "name": "",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [{"internalType": "address", "name": "_borrower", "type": "address"}],
+    "name": "getBorrowerLoans",
+    "outputs": [{"internalType": "uint256[]", "name": "", "type": "uint256[]"}],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [{"internalType": "address", "name": "_lender", "type": "address"}],
+    "name": "getLenderLoans",
+    "outputs": [{"internalType": "uint256[]", "name": "", "type": "uint256[]"}],
+    "stateMutability": "view",
+    "type": "function"
+  }
 ]

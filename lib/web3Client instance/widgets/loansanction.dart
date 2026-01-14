@@ -9,7 +9,7 @@ class LoanSanctionForm extends StatefulWidget {
   const LoanSanctionForm({super.key, required this.lenderAddress});
 
   @override
-  _LoanSanctionFormState createState() => _LoanSanctionFormState();
+  State<LoanSanctionForm> createState() => _LoanSanctionFormState();
 }
 
 class _LoanSanctionFormState extends State<LoanSanctionForm> {
@@ -18,9 +18,10 @@ class _LoanSanctionFormState extends State<LoanSanctionForm> {
   final _interestRateController = TextEditingController();
 
   Future<void> _sanctionLoan() async {
-    final credentials = await web3.credentialsFromPrivateKey('<your_private_key>');
+    final credentials = EthPrivateKey.fromHex('<your_private_key>');
     final function = contract.function('sanctionLoan');
-    final borrowerAddress = EthereumAddress.fromHex(_borrowerAddressController.text);
+    final borrowerAddress =
+        EthereumAddress.fromHex(_borrowerAddressController.text);
     final interestRate = int.parse(_interestRateController.text);
     final result = await web3.sendTransaction(
       credentials,
@@ -31,7 +32,7 @@ class _LoanSanctionFormState extends State<LoanSanctionForm> {
       ),
       chainId: 1337, // replace with your chain ID
     );
-    print(result);
+    debugPrint(result);
   }
 
   @override
